@@ -40,17 +40,6 @@ jobs:
           cd swiftshader
           export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH
           git submodule init
-          git config submodule."third_party/cppdap".url "$srcdir/cppdap"
-          git config submodule."third_party/googletest".url "$srcdir/googletest"
-          git config submodule."third_party/json".url "$srcdir/json"
-          git config submodule."third_party/libbacktrace/src".url "$srcdir/libbacktrace"
-          git config submodule."third_party/PowerVR_Examples".url "$srcdir/Native_SDK"
-          git config submodule."third_party/benchmark".url "$srcdir/benchmark"
-          git config submodule."third_party/glslang".url "$srcdir/glslang"
-          # this repo is not publicly accessible so we won't fetch it
-          git config submodule."third_party/git-hooks".update none
-          git config submodule."third_party/llvm-project".update none
-          git -c protocol.file.allow=always submodule update
 
           cmake \
             -G Ninja \
