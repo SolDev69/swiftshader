@@ -46,7 +46,7 @@ jobs:
             -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_BUILD_TYPE=Release \
             -D SWIFTSHADER_WARNINGS_AS_ERRORS=off \
-            -S SwiftShader -B build
+            -B build
 
           ninja -C build
           mkdir /tmp/swiftshader
