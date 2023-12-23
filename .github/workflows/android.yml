@@ -38,19 +38,15 @@ jobs:
         shell: bash
         run: |
           cd swiftshader
-          export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH
+          # export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH
           git submodule init
+          cd build
+          export CMAKE_C_COMPILER=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android25-clang
+          export CMAKE_CXX_COMPILER=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android25-clang++
+          export CMAKE_ASM_COMPILER=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-as
 
-          cmake \
-            -G Ninja \
-            -DCMAKE_INSTALL_PREFIX=/usr \
-            -DCMAKE_BUILD_TYPE=Release \
-            -D SWIFTSHADER_WARNINGS_AS_ERRORS=off \
-            -B build
-
-          ninja -C build
           mkdir /tmp/swiftshader
-          mv build/libvk_swiftshader.so /tmp/swiftshader
+          mv build/libvk_swiftshader.so /tmp/swiftshader -v
 
       - name: Upload libraries
         uses: actions/upload-artifact@v2
