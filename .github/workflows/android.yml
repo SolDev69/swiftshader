@@ -41,10 +41,10 @@ jobs:
           export PATH=`pwd`/depot_tools:$PATH
           echo $PATH
           cd swiftshader
+          git submodule update --init
           cd build
           cmake ..
           export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH
           export CC=clang
           export CXX=clang++
           cmake --build . --parallel
-            
