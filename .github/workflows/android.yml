@@ -37,7 +37,7 @@ jobs:
       - name: Build SwiftShader
         shell: bash
         run: |
-          cd swiftshader
+          export PATH=$ANDROID_NDK_ROOT/toolchains/llvm/prebuilt/linux-x86_64/bin/:$PATH
           git -C SwiftShader submodule init
           git -C SwiftShader config submodule."third_party/cppdap".url "$srcdir/cppdap"
           git -C SwiftShader config submodule."third_party/googletest".url "$srcdir/googletest"
